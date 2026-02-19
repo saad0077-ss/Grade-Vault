@@ -17,7 +17,7 @@ class HiveServices {
   //-----Box Getters ----------------
   static Box<SubjectModel> get _subjectsBox => Hive.box<SubjectModel>(_subjectsBoxName);
   static Box<SemesterModel> get _semestersBox => Hive.box<SemesterModel>(_semestersBoxName);
-  static Box get _settingsBox => Hive.box<SubjectModel>(_settingsBoxName);
+  static Box get _settingsBox => Hive.box(_settingsBoxName);
 
   //------Initialization -------------------
 

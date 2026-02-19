@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Consumer<GradeProvider>(
-          builder: (_, provider, __) {
+          builder: (_, provider, _) {
             // Show loading spinner while Hive data is being read
             if (provider.isLoading) {
               return const Center(
@@ -100,13 +100,11 @@ class HomeScreen extends StatelessWidget {
           cursorColor: AppColors.accent,
           decoration: InputDecoration(
             hintText: 'e.g. Fall 2025',
-            hintStyle:
-            AppTextStyles.body.copyWith(color: AppColors.textHint),
+            hintStyle: AppTextStyles.body.copyWith(color: AppColors.textHint),
             filled: true,
             fillColor: AppColors.surfaceLight,
             border: OutlineInputBorder(
-              borderRadius:
-              BorderRadius.circular(AppConstants.radiusMD),
+              borderRadius: BorderRadius.circular(AppConstants.radiusMD),
               borderSide: BorderSide.none,
             ),
           ),
@@ -129,8 +127,7 @@ class HomeScreen extends StatelessWidget {
               backgroundColor: AppColors.accent,
               foregroundColor: AppColors.background,
               shape: RoundedRectangleBorder(
-                borderRadius:
-                BorderRadius.circular(AppConstants.radiusSM),
+                borderRadius: BorderRadius.circular(AppConstants.radiusSM),
               ),
             ),
             child: const Text('Save'),
@@ -173,8 +170,7 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: AppConstants.paddingSM),
         itemBuilder: (_, i) => SubjectCard(
           subject: provider.subjects[i],
-          onDelete: () =>
-              provider.removeSubject(provider.subjects[i].id),
+          onDelete: () => provider.removeSubject(provider.subjects[i].id),
         ),
       ),
     );
@@ -199,8 +195,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomActions(
-      BuildContext context, GradeProvider provider) {
+  Widget _buildBottomActions(BuildContext context, GradeProvider provider) {
     if (provider.subjects.isEmpty) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.all(AppConstants.paddingMD),
@@ -214,8 +209,7 @@ class HomeScreen extends StatelessWidget {
                 side: const BorderSide(color: AppColors.surfaceLight),
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                  borderRadius:
-                  BorderRadius.circular(AppConstants.radiusMD),
+                  borderRadius: BorderRadius.circular(AppConstants.radiusMD),
                 ),
               ),
               child: const Text('Clear All'),
@@ -225,14 +219,13 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             flex: 2,
             child: ElevatedButton(
-              onPressed: provider.addSemester,
+              onPressed: provider.saveSemester,
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.accent,
                 foregroundColor: AppColors.background,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
-                  borderRadius:
-                  BorderRadius.circular(AppConstants.radiusMD),
+                  borderRadius: BorderRadius.circular(AppConstants.radiusMD),
                 ),
                 elevation: 0,
               ),

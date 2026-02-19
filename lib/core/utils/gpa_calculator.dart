@@ -33,7 +33,7 @@ class GpaCalculator {
   }
 
   //Return percentage value from 0-100 from UI progress indicators.
-  static double toPercentageToGrade(double gpa) => (gpa / 4.0).clamp(0.0, 1.0);
+  static double toPercentage(double gpa) => (gpa / 4.0).clamp(0.0, 1.0);
 
   //Converts raw Percentage marks to a letter grade
   static String percentageToGrade(double percentage){
