@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../core/constants/app_color.dart';
-import '../screen/home_screen.dart';
-
+import '../screen/splash_screen.dart';
 
 class GradeVaultApp extends StatelessWidget {
   const GradeVaultApp({super.key});
@@ -14,16 +11,19 @@ class GradeVaultApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppColors.background,
+        scaffoldBackgroundColor: const Color(0xFF080B14),
         colorScheme: const ColorScheme.dark(
-          primary: AppColors.accent,
-          secondary: AppColors.accentSecondary,
-          surface: AppColors.surface,
+          primary: Color(0xFFFFBB38),
+          secondary: Color(0xFF38D9FF),
         ),
-        fontFamily: 'Poppins',
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: false,
+        ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

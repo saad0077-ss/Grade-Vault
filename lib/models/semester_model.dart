@@ -17,24 +17,14 @@ class SemesterModel extends HiveObject {
   @HiveField(3)
   final DateTime createdAt;
 
+  @HiveField(4)
+  final String studentType; // stored as string
+
   SemesterModel({
     required this.id,
     required this.name,
     required this.subjects,
+    required this.studentType,
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
-
-  SemesterModel copyWith({
-    String? id,
-    String? name,
-    List<SubjectModel>? subjects,
-    DateTime? createdAt,
-  }) {
-    return SemesterModel(
-      id:        id        ?? this.id,
-      name:      name      ?? this.name,
-      subjects:  subjects  ?? this.subjects,
-      createdAt: createdAt ?? this.createdAt,
-    );
-  }
 }

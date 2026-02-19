@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../core/constants/app_color.dart';
 import '../core/constants/app_constants.dart';
@@ -8,11 +7,7 @@ class GradeDropdown extends StatelessWidget {
   final String value;
   final ValueChanged<String?> onChanged;
 
-  const GradeDropdown({
-    super.key,
-    required this.value,
-    required this.onChanged,
-  });
+  const GradeDropdown({super.key, required this.value, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +16,7 @@ class GradeDropdown extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppConstants.radiusMD),
-        border: Border.all(color: AppColors.surfaceLight),
+        border: Border.all(color: AppColors.cardBorder),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
@@ -33,39 +28,30 @@ class GradeDropdown extends StatelessWidget {
           icon: const Icon(Icons.keyboard_arrow_down_rounded,
               color: AppColors.textSecondary),
           items: AppConstants.gradeOptions.map((grade) {
-            final color = AppColors.gradeColor(grade);
+            final color  = AppColors.gradeColor(grade);
             final points = AppConstants.gradePoints[grade] ?? 0.0;
             return DropdownMenuItem<String>(
               value: grade,
-              child: Row(
-                children: [
-                  Container(
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: color.withOpacity(0.15),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Center(
-                      child: Text(
-                        grade,
-                        style: TextStyle(
-                          color: color,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
+              child: Row(children: [
+                Container(
+                  width: 34,
+                  height: 34,
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.12),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: color.withOpacity(0.3)),
                   ),
-                  const SizedBox(width: 12),
-                  Text(grade, style: AppTextStyles.body),
-                  const Spacer(),
-                  Text(
-                    '${points.toStringAsFixed(1)} pts',
-                    style: AppTextStyles.caption,
+                  child: Center(
+                    child: Text(grade,
+                        style: TextStyle(color: color,
+                            fontWeight: FontWeight.w800, fontSize: 12)),
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(width: 12),
+                Text(grade, style: AppTextStyles.body),
+                const Spacer(),
+                Text('${points.toStringAsFixed(1)} pts', style: AppTextStyles.caption),
+              ]),
             );
           }).toList(),
         ),
